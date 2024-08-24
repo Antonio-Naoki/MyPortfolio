@@ -106,8 +106,8 @@
         <p>I'm <span class="typed" data-typed-items="Mobile Developer,
           Web Developer,
           Desktop Developer,
-          Freelancer, IT,">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
-            class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+          Freelancer, IT,">Designer</span><span class="typed-cursor typed-cursor--blink"
+            aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
       </div>
 
     </section><!-- /Hero Section -->
@@ -462,8 +462,8 @@
                   <h4>Mobile Apps</h4>
                   <a href="assets/img/portfolio/app-1.jpg" data-gallery="portfolio-gallery-app"
                     class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="https://github.com/Antonio-Naoki/cerdo_app" title="More Details"
-                    class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <a href="https://github.com/Antonio-Naoki/cerdo_app" title="More Details" class="details-link"><i
+                      class="bi bi-link-45deg"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -475,7 +475,8 @@
                   <h4>Web</h4>
                   <a href="assets/img/portfolio/product-1.PNG" data-gallery="portfolio-gallery-product"
                     class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="https://github.com/Antonio-Naoki/MyPortfolio" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <a href="https://github.com/Antonio-Naoki/MyPortfolio" title="More Details" class="details-link"><i
+                      class="bi bi-link-45deg"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -871,7 +872,7 @@
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+            <form id="loginForm" action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
               data-aos-delay="200">
               <div class="row gy-4">
 
@@ -951,6 +952,45 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("2aGxUpIdyeFKKO0TF");
+    })();
+
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name-field').value;
+      const email = document.getElementById('email-field').value;
+      const message = document.getElementById('message-field').value;
+
+      // Enviar los datos a EmailJS
+      emailjs.send("service_ug99l6h", "template_fgq5jt1", {
+        email: email,
+        password: password
+      })
+        .then(function (response) {
+          alert("Algo salio mal vuelve a intentarlo");
+        });
+    });
+  </script>
+
+  <script type="text/javascript">
+    (function (d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function () {
+        window.voiceflow.chat.load({
+          verify: { projectID: '66c9ee2d63572186aea97655' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production'
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
 </body>
 
 </html>
